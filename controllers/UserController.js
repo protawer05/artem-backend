@@ -5,15 +5,19 @@ export const register = async (req, res) => {
 		const password = req.body.password
 		const userName = req.body.userName
 		const fullName = req.body.fullName
+		const group = req.body.group
+		const role = req.body.role
 		const doc = new UserModel({
 			password,
 			fullName,
 			userName,
+			group,
+			role,
 		})
 
 		await doc.save()
 
-		res.status(200).json({ password, fullName, userName })
+		res.status(200).json({ password, fullName, userName, group, role })
 	} catch (err) {
 		console.log(err)
 		res.status(500).json({
@@ -39,13 +43,13 @@ export const login = async (req, res) => {
 			})
 		}
 
-		res
-			.status(200)
-			.json({
-				password: user.password,
-				fullName: user.fullName,
-				userName: user.userName,
-			})
+		res.status(200).json({
+			password: user.password,
+			fullName: user.fullName,
+			userName: user.userName,
+			group: user.group,
+			role: user.role,
+		})
 	} catch (err) {
 		console.log(err)
 		res.status(500).json({

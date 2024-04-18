@@ -14,6 +14,14 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	group: {
+		type: String,
+		required: true,
+	},
+	role: {
+		type: String,
+		default: 'student',
+	},
 })
 
 export default mongoose.model('User', UserSchema)

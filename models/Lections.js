@@ -9,6 +9,10 @@ const LectionsSchema = new mongoose.Schema(
 		description: {
 			type: String,
 		},
+		fileName: {
+			type: String,
+			required: true,
+		},
 	},
 	{ timestamps: true }
 )
